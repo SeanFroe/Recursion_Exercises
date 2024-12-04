@@ -22,8 +22,19 @@ const everyOther = (str, i = 0, newStr = "") => {
 };
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
+const isPalindrome = (str, idx = 0) => {
+  let leftIdx = idx;
+  let rightIdx = str.length - idx - 1;
+  if (leftIdx >= rightIdx) return true;
+  if (str[leftIdx] !== str[rightIdx]) return false;
+  return isPalindrome(str, idx + 1);
+};
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
-
+const findIndex = (arr, val, i = 0) => {
+  if (i === arr.length) return -1;
+  if (arr[i] === val) return i;
+  return findIndex(arr, val, i + 1);
+};
 /** revString: return a copy of a string, but in reverse. */
 
 /** gatherStrings: given an object, return an array of all of the string values. */
@@ -35,8 +46,8 @@ module.exports = {
   product,
   longest,
   everyOther,
-  // isPalindrome,
-  // findIndex,
+  isPalindrome,
+  findIndex,
   // revString,
   // gatherStrings,
   // binarySearch,
