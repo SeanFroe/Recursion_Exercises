@@ -14,6 +14,12 @@ const longest = (words, i = 0, longestSoFar = 0) => {
 };
 /** everyOther: return a string with every other letter. */
 
+const everyOther = (str, i = 0, newStr = "") => {
+  if (i >= str.length) return newStr;
+  newStr += str[i];
+
+  return everyOther(str, i + 2, newStr);
+};
 /** isPalindrome: checks whether a string is a palindrome or not. */
 
 /** findIndex: return the index of val in arr (or -1 if val is not present). */
@@ -28,7 +34,7 @@ const longest = (words, i = 0, longestSoFar = 0) => {
 module.exports = {
   product,
   longest,
-  // everyOther,
+  everyOther,
   // isPalindrome,
   // findIndex,
   // revString,
