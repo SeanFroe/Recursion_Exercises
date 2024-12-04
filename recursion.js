@@ -7,6 +7,11 @@ const product = (nums, i = 0) => {
 
 /** longest: return the length of the longest word in an array of words. */
 
+const longest = (words, i = 0, longestSoFar = 0) => {
+  if (i === words.length) return longestSoFar;
+  longestSoFar = Math.max(words[i].length, longestSoFar);
+  return longest(words, i + 1, longestSoFar);
+};
 /** everyOther: return a string with every other letter. */
 
 /** isPalindrome: checks whether a string is a palindrome or not. */
@@ -22,7 +27,7 @@ const product = (nums, i = 0) => {
 
 module.exports = {
   product,
-  // longest,
+  longest,
   // everyOther,
   // isPalindrome,
   // findIndex,
