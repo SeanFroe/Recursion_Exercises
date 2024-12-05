@@ -36,9 +36,22 @@ const findIndex = (arr, val, i = 0) => {
   return findIndex(arr, val, i + 1);
 };
 /** revString: return a copy of a string, but in reverse. */
+const revString = (str, i = 0, newStr = "") => {
+  if (newStr.length === str.length) return newStr;
+  newStr += str[str.length - 1 - i];
+  return revString(str, i + 1, newStr);
+};
 
 /** gatherStrings: given an object, return an array of all of the string values. */
-
+const gatherStrings = (obj) => {
+  const stringArr = [];
+  for (const key in obj) {
+    if (typeof obj[key] === "string") stringArr.push(obj[key]);
+    if (typeof obj[key] === "object")
+      stringArr.push(...gatherStrings(obj[key]));
+  }
+  return stringArr;
+};
 /** binarySearch: given a sorted array of numbers, and a value,
  * return the index of that value (or -1 if val is not present). */
 
@@ -48,7 +61,7 @@ module.exports = {
   everyOther,
   isPalindrome,
   findIndex,
-  // revString,
-  // gatherStrings,
+  revString,
+  gatherStrings,
   // binarySearch,
 };
